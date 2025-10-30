@@ -939,8 +939,16 @@ body.light .footer { background: #f7f8fb; }
 /* Mobile responsive */
 @media (max-width: 600px) {
   .chat-panel {
-    width: calc(100vw - 40px);
-    height: calc(100vh - 120px);
+    width: calc(100vw - 20px);
+    height: 500px;
+    max-height: calc(100vh - 100px);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+    bottom: 80px;
+  }
+  
+  .chat-panel.open {
+    transform: translateX(-50%) translateY(0) scale(1);
   }
   
   .chat-toggle {
@@ -948,6 +956,34 @@ body.light .footer { background: #f7f8fb; }
     left: 15px;
     width: 55px;
     height: 55px;
+    z-index: 1001;
+  }
+  
+  .chat-messages {
+    padding: 15px;
+    max-height: 350px;
+  }
+  
+  .chat-input-wrapper {
+    padding: 12px;
+  }
+  
+  .chat-send-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .chat-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  /* Ensure floating buttons don't overlap */
+  .float-btn-group {
+    right: 15px;
+    bottom: 15px;
+    z-index: 999;
   }
 }
 
@@ -1021,6 +1057,47 @@ body.light .footer { background: #f7f8fb; }
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .contact-form .form-row { grid-template-columns: 1fr; }
+  
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Footer mobile fix */
+  .footer-grid { 
+    grid-template-columns: 1fr; 
+    gap: 30px;
+  }
+  .footer { 
+    padding: 40px 20px 18px;
+    overflow-x: hidden;
+  }
+  .footer-col {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .footer-col h4 {
+    font-size: 18px;
+  }
+  .newsletter {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .newsletter input {
+    width: 100%;
+  }
+  .newsletter button {
+    width: 100%;
+  }
+  .footer-col .social {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 /* --- Fix for View More section overlapping below sections --- */
