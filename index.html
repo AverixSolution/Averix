@@ -1,331 +1,841 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  IMPORTANT: Before deploying, replace 'YOUR_GEMINI_API_KEY_HERE' in script.js 
+  with your actual Gemini API key from https://makersuite.google.com/app/apikey
+-->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="Averix Solutions | Solapur Software Startup">
-  <meta name="description" content="Averix Solutions is a Solapur-based startup providing innovative software solutions, AI/ML, and web development for small businesses, hospitals, students, and enterprises.">
-  <meta name="keywords" content="Solapur software solutions, Solapur startup, software development, AI, machine learning, web development, hospital software, student projects, business software, Averix Solutions">
-  <meta name="author" content="Averix Solutions">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Averix Solutions | Solapur Software Startup">
-  <meta property="og:description" content="Solapur-based software startup delivering solutions for small businesses, hospitals, students, and more.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/">
-  <meta property="og:site_name" content="Averix Solutions">
-  <meta property="og:locale" content="en_IN">
-  <meta property="og:image" content="https://yourdomain.com/assets/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Averix Solutions | Solapur Software Startup">
-  <meta name="twitter:description" content="Solapur-based software solutions for businesses, hospitals, and students.">
-  <meta name="twitter:image" content="https://yourdomain.com/assets/og-image.jpg">
+  <!-- Basic SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Averix Solutions — Empowering Innovation with Software, AI & Intelligent Design</title>
+  <meta name="description" content="Averix Solutions is a Solapur-based startup building robust software, AI/ML solutions, and delightful web & mobile apps. Your ideas, engineered to perfection." />
+  <link rel="canonical" href="https://www.averixsolutions.example/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Averix Solutions — Empowering Innovation with Software, AI & Intelligent Design" />
+  <meta property="og:description" content="Turning code into impact. We craft software, AI/ML, and experience-led products for startups, SMEs, and students." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.averixsolutions.example/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Averix Solutions — Empowering Innovation with Software, AI & Intelligent Design" />
+  <meta name="twitter:description" content="Innovation starts here. Based in Solapur, Maharashtra." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-
-  <meta name="google-site-verification" content="EOgyNYNB6yIvJG3ttlYxR3WzV_tyiUhVuaLI7ANJ0Nw" />
-  <title>Averix Solutions | Software, AI & ML Solutions</title>
-
-  <!-- Link CSS -->
-  <link rel="stylesheet" href="style.css">
-  <style>
-  :root {
-    --bg-primary: #fff;
-    --bg-secondary: #f5f5f5;
-    --text-primary: #222;
-    --text-secondary: #555;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-primary: #181818;
-      --bg-secondary: #222;
-      --text-primary: #eee;
-      --text-secondary: #bbb;
-    }
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-    }
-  }
-</style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- Preloader -->
-  <div class="preloader" id="preloader">
-  <div class="preloader-spinner">
-    <div class="preloader-dot"></div>
-    <div class="preloader-dot"></div>
-    <div class="preloader-dot"></div>
+  <div id="preloader" aria-hidden="true" role="status">
+    <div class="loader">
+      <div class="spinner"></div>
+      <p>Booting Averix Engine…</p>
+    </div>
   </div>
-  <span class="preloader-text">Loading Averix Solutions...</span>
-</div>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">Averix Solutions</a>
-      <ul class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="mobile-menu">
-        <span></span><span></span><span></span>
-      </div>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Skip link -->
+  <a href="#hero" class="skip-link">Skip to content</a>
+
+  <!-- Header / Navbar -->
+  <header id="header" class="header" role="banner">
+    <div class="container nav-container">
+        <a href="#hero" class="brand" aria-label="Averix Solutions Home">
+          <img src="img/original logo.png" alt="Averix Solutions Logo" class="brand-logo-img" />
+          <span class="brand-name">Averix Solutions</span>
+        </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <ul id="navMenu" class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#tech">Technologies</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact" class="btn btn-gradient btn-small">Contact</a></li>
+          <li class="theme-switch">
+            <input type="checkbox" id="themeToggle" aria-label="Toggle light mode" />
+            <label for="themeToggle" class="toggle">
+              <i class="fa-solid fa-moon"></i>
+              <i class="fa-solid fa-sun"></i>
+            </label>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1>Innovative Software Solutions for Every Need</h1>
-        <p>We are Averix Solutions, a dynamic startup delivering cutting-edge software development, AI/ML solutions, and tailored projects for small businesses, hospitals, students, and enterprises.</p>
-        <a href="#contact" class="cta-button">Get in Touch</a>
-      </div>
-      <div class="hero-visual">
-        <div class="tech-grid">
-          <div class="tech-card"><div style="font-size: 2rem;">💻</div><h3>Software Dev</h3></div>
-          <div class="tech-card"><div style="font-size: 2rem;">🌐</div><h3>Web Dev</h3></div>
-          <div class="tech-card"><div style="font-size: 2rem;">🤖</div><h3>AI/ML</h3></div>
-          <div class="tech-card"><div style="font-size: 2rem;">🎓</div><h3>Student Projects</h3></div>
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section parallax">
+      <div class="hero-overlay"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <h1 class="hero-title">
+            <span id="typed" aria-live="polite">Empowering Innovation with Software, AI & Intelligent Design.</span>
+            <span class="caret" aria-hidden="true"></span>
+          </h1>
+          <p class="hero-subtitle">
+            Solapur-based studio crafting robust software, AI/ML, and delightful web & mobile apps — from idea to impact.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-gradient">Get a Free Consultation</a>
+            <a href="#projects" class="btn btn-outline">Explore Our Work</a>
+          </div>
+          <div class="hero-badges">
+            <span class="badge"><i class="fa-solid fa-location-dot"></i> Solapur, Maharashtra</span>
+            <span class="badge"><i class="fa-solid fa-rocket"></i> Innovation starts here</span>
+            <span class="badge"><i class="fa-solid fa-code"></i> Turning code into impact</span>
+          </div>
+        </div>
+
+        <!-- Floating tech icons -->
+        <div class="floating-icons" aria-hidden="true">
+          <i class="devicon-react-original colored float"></i>
+          <i class="devicon-nodejs-plain colored float delay-1"></i>
+          <i class="devicon-python-plain colored float delay-2"></i>
+          <i class="devicon-docker-plain colored float delay-3"></i>
+          <i class="devicon-tensorflow-original colored float delay-4"></i>
+          <i class="devicon-firebase-plain colored float delay-5"></i>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
+    <!-- About Us -->
     <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About InnovateTech</h2>
-            <p class="section-subtitle">Building tomorrow's solutions today</p>
-            
-            <div class="about-grid">
-                <div class="about-content">
-                    <h3>Our Mission</h3>
-                    <p>With over 2 years of dedicated experience in the tech industry, we are committed to delivering innovative software solutions that transform businesses and empower students. Our expertise spans across multiple domains, ensuring we can meet diverse technological needs.</p>
-                    
-                    <h3>Our Vision</h3>
-                    <p>To become the leading startup that bridges the gap between cutting-edge technology and practical business solutions, making advanced software accessible to everyone from small businesses to large enterprises.</p>
-                    
-                    <h3>Why Choose Us?</h3>
-                    <p>We combine technical excellence with deep industry understanding, delivering solutions that are not just technically sound but also business-focused and user-centric.</p>
-                </div>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">2+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>About Averix Solutions</h2>
+          <p>We are builders, tinkerers, and lifelong learners dedicated to engineering meaningful products. Your ideas, engineered to perfection.</p>
         </div>
+
+        <div class="about-grid">
+          <div class="glass-panel reveal">
+            <h3>Our Mission</h3>
+            <p>To empower startups, SMEs, and students with impactful technology — from robust software systems to intelligent AI, wrapped in delightful user experiences.</p>
+            <h3>Our Vision</h3>
+            <p>Become Maharashtra’s go-to innovation partner, where businesses and students co-create solutions that scale locally and compete globally.</p>
+            <h3>Core Values</h3>
+            <ul class="values">
+              <li><strong>Innovation:</strong> We ship, learn, and iterate fast.</li>
+              <li><strong>Reliability:</strong> Stable, secure, maintainable by design.</li>
+              <li><strong>Ethics:</strong> Privacy-first and responsible AI practices.</li>
+              <li><strong>Craftsmanship:</strong> Details matter — from code to pixels.</li>
+              <li><strong>Growth:</strong> We invest in continuous learning and mentorship.</li>
+            </ul>
+          </div>
+          <div class="glass-panel reveal">
+            <h3>Our Story</h3>
+            <p>Founded in Solapur, Averix grew from a small team solving real-world problems for local businesses and institutes to a nimble studio delivering products across India. We believe great technology should be accessible, scalable, and human-centered.</p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="year">2022</span>
+                <p>Founded in Solapur with a mission to bridge innovation and execution.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="year">2023</span>
+                <p>Delivered our first AI pilot — automating quality checks for an SME.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="year">2024</span>
+                <p>Launched Student Innovation Program and supported 50+ academic projects.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="year">2025</span>
+                <p>Scaling AI/ML offerings with MLOps & real-time analytics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Team section removed as requested earlier -->
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive technology solutions tailored to your needs</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Software Development</h3>
-                    <p>Custom software solutions built with modern technologies, scalable architectures, and user-centric design principles.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Web Development</h3>
-                    <p>Responsive, fast, and SEO-optimized websites and web applications that drive business growth and user engagement.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Intelligent solutions powered by AI and ML algorithms, from chatbots to predictive analytics and automation systems.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3>Student Projects</h3>
-                    <p>Academic project support, research assistance, and educational technology solutions for students and institutions.</p>
-                </div>
-            </div>
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Services</h2>
+          <p>From strategy to ship. We deliver end-to-end with quality and speed.</p>
         </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" tabindex="0" aria-label="Software Development">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-cubes"></i>
+                <h3>Software Development</h3>
+                <p>Custom software engineered to scale and evolve with your business.</p>
+              </div>
+              <div class="card-back">
+                <p>We architect robust systems with clean, well-tested code and clear documentation. Expect maintainable solutions with CI/CD pipelines, logging, and observability built-in.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="Web Development">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-globe"></i>
+                <h3>Web Development</h3>
+                <p>Fast, accessible, SEO-friendly web apps your users will love.</p>
+              </div>
+              <div class="card-back">
+                <p>From marketing sites to complex dashboards, we build responsive, secure applications with modern stacks (React/Next.js) and deploy to reliable cloud platforms.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="AI & ML Solutions">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-brain"></i>
+                <h3>AI & ML Solutions</h3>
+                <p>Predictive models that turn data into decisions.</p>
+              </div>
+              <div class="card-back">
+                <p>We design data pipelines, train models (TensorFlow/PyTorch), and deliver explainable AI with dashboards. We prioritize bias detection, privacy, and measurable results.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="Student/Academic Projects">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>Student/Academic Projects</h3>
+                <p>Mentorship, code reviews, and showcase-ready demos.</p>
+              </div>
+              <div class="card-back">
+                <p>We help students shape ideas into working prototypes with clean code, documentation, and presentations. Perfect for final-year projects with industry relevance.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="Cloud Integration & DevOps">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-cloud"></i>
+                <h3>Cloud Integration & DevOps</h3>
+                <p>Ship confidently with automation and observability.</p>
+              </div>
+              <div class="card-back">
+                <p>We containerize, orchestrate, and automate using Docker, Kubernetes, and GitHub Actions. Expect reproducible builds, IaC, and robust monitoring from day one.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="Data Analytics & Visualization">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-chart-bar"></i>
+                <h3>Data Analytics & Visualization</h3>
+                <p>Insights at a glance with dashboards that tell stories.</p>
+              </div>
+              <div class="card-back">
+                <p>We transform messy data into actionable insights — building pipelines, BI dashboards, and reports with clear KPIs for every decision-maker.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-label="Mobile App Development">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>Mobile App Development</h3>
+                <p>Android/iOS apps that feel native and perform.</p>
+              </div>
+              <div class="card-back">
+                <p>We create cross-platform apps with smooth UX, offline-first patterns, and secure APIs. Ship to stores with analytics and release pipelines configured.</p>
+                <a href="#" class="learn-more">Learn more</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-row reveal" style="display:flex; justify-content:center; align-items:center; width:100%;"><a href="#contact" class="btn btn-gradient">Request a Quote</a></div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Technologies -->
+    <section id="tech" class="section parallax alt-bg">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Technologies We Use</h2>
+          <p>We stay on the edge so you can stay ahead — modern, proven, and secure.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-item reveal" title="React"><i class="devicon-react-original colored"></i><span>React</span></div>
+          <div class="tech-item reveal" title="Next.js"><i class="devicon-nextjs-original"></i><span>Next.js</span></div>
+          <div class="tech-item reveal" title="Node.js"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+          <div class="tech-item reveal" title="Express"><i class="devicon-express-original"></i><span>Express</span></div>
+          <div class="tech-item reveal" title="Python"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+          <div class="tech-item reveal" title="TensorFlow"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span></div>
+          <div class="tech-item reveal" title="PyTorch"><i class="devicon-pytorch-original colored"></i><span>PyTorch</span></div>
+          <div class="tech-item reveal" title="Flask"><i class="devicon-flask-original"></i><span>Flask</span></div>
+          <div class="tech-item reveal" title="Docker"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+          <div class="tech-item reveal" title="Kubernetes"><i class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span></div>
+          <div class="tech-item reveal" title="Firebase"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+          <div class="tech-item reveal" title="PostgreSQL"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+          <div class="tech-item reveal" title="MongoDB"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+          <div class="tech-item reveal" title="AWS"><i class="devicon-amazonwebservices-plain colored"></i><span>AWS</span></div>
+          <div class="tech-item reveal" title="GCP"><i class="devicon-googlecloud-plain colored"></i><span>GCP</span></div>
+          <div class="tech-item reveal" title="GitHub Actions"><i class="devicon-github-original"></i><span>GitHub Actions</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
     <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Showcasing our expertise through real-world implementations</p>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">🔍</div>
-                    <div class="project-content">
-                        <h3 class="project-title">HideInSight</h3>
-                        <p class="project-description">Advanced data privacy and security solution with intelligent hiding mechanisms for sensitive information.</p>
-                        <a href="https://github.com/zaidsutar2151/HideInSight-A-Custom-Image-Steganography-Tool" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🎤</div>
-                    <div class="project-content">
-                        <h3 class="project-title">VoiceFlow</h3>
-                        <p class="project-description">Voice-powered workflow automation system with natural language processing capabilities.</p>
-                        <a href="https://github.com/zaidsutar2151/VoiceFlow-AI-Driven-Conversational-Agent" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">💬</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Chacha Chaudhary ChatBot</h3>
-                        <p class="project-description">Intelligent conversational AI assistant with multi-language support and context awareness.</p>
-                        <a href="https://github.com/zaidsutar2151/Chacha-Chaudhary-Chat-Bot" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">👤</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Portfolio Platform</h3>
-                        <p class="project-description">Dynamic portfolio creation platform with customizable templates and analytics dashboard.</p>
-                        <a href="https://github.com/zaidsutar2151/Portfolio" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Featured Projects</h2>
+          <p>Case studies that moved the needle for clients and students alike.</p>
         </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Project filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="ai" role="tab">AI</button>
+          <button class="filter-btn" data-filter="web" role="tab">Web</button>
+          <button class="filter-btn" data-filter="student" role="tab">Student</button>
+          <button class="filter-btn" data-filter="business" role="tab">Business</button>
+          <button class="filter-btn" data-filter="portfolio" role="tab">Portfolio</button>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="Chacha Chaudhary - Ganga River Chat Bot 🌊🤖"
+            data-category="ai"
+            data-tech="-Frontend: HTML, CSS, JavaScript -Backend: Python (Flask)"
+            data-desc="An interactive chat bot designed to raise awareness about the Ganga River through a user-friendly interface. This project blends technology with environmental consciousness."
+            data-results="Interactive chat experience simulating conversations about the Ganga River. Provides factual and educational information about the river’s significance, history, and conservation. Promotes environmental awareness and encourages responsible behavior. Real-time responses using Flask backend logic."
+            data-link="https://github.com/zaidsutar2151/Chacha-Chaudhary-Chat-Bot"
+            data-image="img/chat-bot.jpg">
+            <img src="img/chat-bot.jpg" alt="SmartCrop AI dashboard preview" />
+            <div class="card-info">
+              <h3>Chacha Chaudhary - Ganga River Chat Bot 🌊🤖</h3>
+              <p class="tag">AI</p>
+              <p class="short">An interactive chat bot designed to raise awareness about the Ganga River through a user-friendly interface. This project blends technology with environmental consciousness.</p>
+              <button class="btn btn-outline view-project" aria-label="View SmartCrop AI case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="AI-Powered Personalized Dietary Recommendation System"
+            data-category="ai web"
+            data-tech=" Backend:
+                          🐍 Flask,
+                          📘 scikit-learn,
+                          🧮 pandas,
+                          💾 joblib,
+                          🌟 Google Generative AI (Gemini Flash 2.0),
+                          🔐 python-dotenv.
+                          -🎨 Frontend:
+                          🌐 HTML/CSS,
+                          🎀 Bootstrap,
+                          ✍️ Google Fonts (Poppins),
+                          💻 JavaScript".
+            data-desc="This project is an innovative dietary platform that leverages artificial intelligence to provide dynamic, personalized meal and habit suggestions. Unlike traditional systems that offer static, predefined meal plans, our solution adapts to each user's unique health profile, preferences, and goals, ensuring more effective and sustainable healthy living."
+            data-results="We present an AI-powered dietary recommendation system that dynamically generates personalized meal and habit suggestions based on each user's unique health profile, goals, and feedback. By integrating machine learning for calorie prediction and generative AI for adaptive meal planning, our platform offers real-time, interactive guidance that evolves with the user's needs, making healthy eating more accessible and sustainable."
+            data-link="https://github.com/zaidsutar2151/AI-Powered-Personalized-Dietary-Recommendation-System"
+            data-image="img/plan-diet.jpg">
+            <img src="img/plan-diet.jpg" alt="RetailDash analytics dashboard preview" />
+            <div class="card-info">
+              <h3>AI-Powered Personalized Dietary Recommendation System</h3>
+              <p class="tag">Web • Ai</p>
+              <p class="short">an innovative dietary platform that leverages artificial intelligence to provide dynamic, personalized meal and habit suggestions.</p>
+              <button class="btn btn-outline view-project" aria-label="View RetailDash case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="Personal Portfolio(Mr. Z. S. Sutar)"
+            data-category="portfolio"
+            data-tech="HTML, CSS, JavaScript"
+            data-desc="A personal portfolio website to showcase projects, skills, and experience. according to the customer requirements."
+            data-results="A responsive and visually appealing portfolio website that effectively highlights the individual's work and expertise. "
+            data-link="https://github.com/zaidsutar2151/Portfolio"
+            data-image="img/portfolio.png">
+            <img src="img/portfolio.png" alt="EduAssist chat interface preview" />
+            <div class="card-info">
+              <h3>Personal Portfolio</h3>
+              <p class="tag">Portfolio</p>
+              <p class="short">A personal portfolio website to showcase projects, skills, and experience. according to the customer requirements.</p>
+              <button class="btn btn-outline view-project" aria-label="View EduAssist case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="VoiceFlow-AI-Driven-Conversational-Agent"
+            data-category="ai business"
+            data-tech="python"
+            data-desc="This project is a voice-enabled chatbot designed to facilitate interactive conversations using speech recognition and text-to-speech technologies. The chatbot leverages the LLaMA 3 model for generating responses and gTTS for speech synthesis. It can ask predefined questions and generate new ones based on the conversation context."
+            data-results="Voice Input & Output: Utilizes speech_recognition for capturing user responses and gTTS for generating speech output. Dynamic Question Generation: Uses the LLaMA 3 model to generate follow-up questions based on the conversation context."
+            data-link="https://github.com/zaidsutar2151/VoiceFlow-AI-Driven-Conversational-Agent"
+            data-image="img/conversation.jpg">
+            <img src="img/conversation.jpg" alt="FleetSense monitoring UI preview" />
+            <div class="card-info">
+              <h3>VoiceFlow-AI-Driven-Conversational-Agent</h3>
+              <p class="tag">AI • Business</p>
+              <p class="short">voice-enabled chatbot designed to facilitate interactive conversations using speech recognition and text-to-speech technologies.</p>
+              <button class="btn btn-outline view-project" aria-label="View FleetSense case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="Business analysis and forecasting using AI"
+            data-category="ai business"
+            data-tech="python, R, Excel, Power BI"
+            data-desc="This is the analysis report of the business data using AI techniques to forecast the future trends and patterns."
+            data-results="Data Cleaning & Preprocessing: Handled missing values, outliers, and normalized data for accurate analysis. Exploratory Data Analysis (EDA): Visualized data distributions, correlations, and trends using Python libraries like Matplotlib and Seaborn. Forecasting Models: Implemented time series forecasting models such as ARIMA and Prophet to predict future sales and demand patterns. Business Insights: Provided actionable insights and recommendations based on the analysis to inform strategic decision-making."
+            data-link="https://github.com/itzzmeak07/data-analysis"
+            data-image="img/analysis.jpg">
+            <img src="img/analysis.jpg" alt="FleetSense monitoring UI preview" />
+            <div class="card-info">
+              <h3>Business analysis and forecasting using AI</h3>
+              <p class="tag">AI • Business</p>
+              <p class="short">Analysis report of the business data using AI techniques to forecast the future trends and patterns.</p>
+              <button class="btn btn-outline view-project" aria-label="View FleetSense case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="Personal Portfolio(Mr. A. S. Valsangkar)"
+            data-category="portfolio"
+            data-tech="HTML, CSS, JavaScript"
+            data-desc="A personal portfolio website to showcase projects, skills, and experience. according to the customer requirements."
+            data-results="A responsive and visually appealing portfolio website that effectively highlights the individual's work and expertise. "
+            data-link="https://github.com/itzzmeak07/portfolio"
+            data-image="img/portfolio.png">
+            <img src="img/portfolio.png" alt="EduAssist chat interface preview" />
+            <div class="card-info">
+              <h3>Personal Portfolio</h3>
+              <p class="tag">Portfolio</p>
+              <p class="short">A personal portfolio website to showcase projects, skills, and experience. according to the customer requirements.</p>
+              <button class="btn btn-outline view-project" aria-label="View EduAssist case study">View Case Study</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="AI-TOOL-KIT"
+            data-category="ai"
+            data-tech="html,css,java script,python, API, flask"
+            data-desc="AI Tool Kit is a web application that provides users with access to various AI-powered tools and functionalities. The application is built using HTML, CSS, JavaScript for the frontend, and Python with Flask for the backend. It integrates multiple AI APIs to offer features such as text generation, image recognition, sentiment analysis, and more."
+            data-results="User-Friendly Interface: A clean and intuitive web interface that allows users to easily navigate and access different AI tools. AI Integration: Seamless integration with various AI APIs to provide diverse functionalities within a single platform."
+            data-link="https://github.com/itzzmeak07/AI-Tool-Kit"
+            data-image="img/ai-tools.png">
+            <img src="img/ai-tools.png" alt="CampusHub project collaboration preview" />
+            <div class="card-info">
+              <h3>AI-TOOL-KIT</h3>
+              <p class="tag">Student • AI</p>
+              <p class="short">AI Tool Kit is a web application that provides users with access to various AI-powered tools and functionalities.</p>
+              <button class="btn btn-outline view-project" aria-label="View CampusHub case study">View Case Study</button>
+            </div>
+          </article>
+          <article class="project-card reveal"
+            tabindex="0"
+            data-title="Male---Female-Identification-Using-ML"
+            data-category="ai student"
+            data-tech="Python, ML, CNN"
+            data-desc="This repository contains a machine learning project focused on the identification and classification of gender (male or female) from images. The aim of this project is to develop and train a machine learning model using convolutional neural networks (CNNs) to accurately predict gender based on facial characteristics depicted in images."
+            data-results="Data Collection & Preprocessing: Gathered a diverse dataset of labeled images and performed preprocessing steps such as resizing, normalization, and augmentation to enhance model performance. Model Development: Built and trained a CNN model using Python libraries such as TensorFlow/Keras, achieving high"
+            data-link="https://github.com/Arshad0214/Male---Female-Identification-Using-ML"
+            data-image="img/ML.png">
+            <img src="img/ML.png" alt="CampusHub project collaboration preview" />
+            <div class="card-info">
+              <h3>Male---Female-Identification-Using-ML</h3>
+              <p class="tag">Student • AI</p>
+              <p class="short">Machine learning project focused on the identification and classification of gender (male or female) from images.</p>
+              <button class="btn btn-outline view-project" aria-label="View CampusHub case study">View Case Study</button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- View More Button -->
+        <div class="view-more-container" style="text-align: center; margin-top: 20px;">
+          <button id="viewMoreBtn" class="btn btn-gradient">View More</button>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const allProjects = document.querySelectorAll(".project-card");
+            const viewMoreBtn = document.getElementById("viewMoreBtn");
+            const maxVisible = 6;
+            let expanded = false;
+
+            // Initially show only first 6 projects
+            allProjects.forEach((project, index) => {
+              project.style.display = index < maxVisible ? "block" : "none";
+            });
+
+            // View More / View Less toggle
+            viewMoreBtn.addEventListener("click", () => {
+              expanded = !expanded;
+              allProjects.forEach((project, index) => {
+                if (index >= maxVisible) {
+                  project.style.display = expanded ? "block" : "none";
+                }
+              });
+
+              // Change button text accordingly
+              viewMoreBtn.textContent = expanded ? "View Less" : "View More";
+
+              // Smooth scroll adjustment when collapsing
+              if (!expanded) {
+                const projectsSection = document.getElementById("projects");
+                projectsSection.scrollIntoView({ behavior: "smooth" });
+              }
+            });
+          });
+        </script>
+
+
+
+      </div>
+
+      <!-- Project Modal -->
+      <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-overlay" data-close="modal"></div>
+        <div class="modal-content glass-panel">
+          <button class="modal-close" aria-label="Close project dialog" data-close="modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="modal-body">
+            <div class="modal-media">
+              <img id="modalImage" src="" alt="" />
+            </div>
+            <div class="modal-details">
+              <h3 id="modalTitle">Project Title</h3>
+              <p id="modalDesc">Project description...</p>
+              <p><strong>Technologies:</strong> <span id="modalTech"></span></p>
+              <p><strong>Outcome:</strong> <span id="modalResults"></span></p>
+              <a id="modalLink" href="#" target="_blank" rel="noopener" class="btn btn-gradient">View Repo/Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Clients Section -->
-    <section id="clients" class="section" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Our Impact</h2>
-            <p class="section-subtitle">Serving diverse sectors with tailored solutions</p>
-            
-            <div class="clients-grid">
-                <div class="client-card">
-                    <div class="client-icon">🏥</div>
-                    <h3>Healthcare</h3>
-                    <p>Providing hospitals with digital solutions for patient management, data analytics, and operational efficiency.</p>
-                </div>
-                
-                <div class="client-card">
-                    <div class="client-icon">🏢</div>
-                    <h3>Small Businesses</h3>
-                    <p>Empowering small businesses with affordable, scalable software solutions that drive growth and productivity.</p>
-                </div>
-                
-                <div class="client-card">
-                    <div class="client-icon">🎓</div>
-                    <h3>Educational Sector</h3>
-                    <p>Supporting students and educational institutions with innovative learning tools and project development.</p>
-                </div>
-                
-                <div class="client-card">
-                    <div class="client-icon">🏭</div>
-                    <h3>Enterprises</h3>
-                    <p>Delivering enterprise-grade solutions with robust security, scalability, and integration capabilities.</p>
-                </div>
-            </div>
+    <!-- Testimonials -->
+    <section id="testimonials" class="section alt-bg">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>What Clients & Students Say</h2>
+          <p>Real results, trusted relationships.</p>
         </div>
+
+        <div class="testimonial-slider reveal" aria-roledescription="carousel" aria-label="Testimonials">
+          <div class="slider-track" id="testimonialTrack">
+            <figure class="testimonial">
+              <blockquote>They delivered a dashboard that our team actually enjoys using. Clean, fast, and on time.</blockquote>
+              <figcaption>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Client portrait" />
+                <div>
+                  <strong>Priya Deshmukh</strong>
+                  <span>Operations Head, Retail Chain (Pune)</span>
+                  <div class="stars" aria-label="5 star rating">★★★★★</div>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote>The AI pilot showed measurable ROI in weeks. Clear communication and ethical approach.</blockquote>
+              <figcaption>
+                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop" alt="Client portrait" />
+                <div>
+                  <strong>Rahul Mehta</strong>
+                  <span>Founder, Logistics Startup (Mumbai)</span>
+                  <div class="stars" aria-label="5 star rating">★★★★★</div>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote>Our students shipped better projects this year thanks to Averix’s mentorship and code reviews.</blockquote>
+              <figcaption>
+                <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop" alt="Professor portrait" />
+                <div>
+                  <strong>Prof. Anjali Kulkarni</strong>
+                  <span>Computer Science, Solapur University</span>
+                  <div class="stars" aria-label="5 star rating">★★★★★</div>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote>I learned more in one month than a semester. They helped us turn a concept into a polished app.</blockquote>
+              <figcaption>
+                <img src="https://images.unsplash.com/photo-1531123414780-f7424c2b2a49?q=80&w=200&auto=format&fit=crop" alt="Student portrait" />
+                <div>
+                  <strong>Simran B.</strong>
+                  <span>Final-year Student (Solapur)</span>
+                  <div class="stars" aria-label="5 star rating">★★★★★</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-btn prev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-btn next" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="slider-dots" id="testimonialDots" role="tablist" aria-label="Testimonial navigation"></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-    <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Ready to start your next project? Let's discuss how we can help</p>
-        <div class="contact-container">
-            <a href="https://forms.gle/your-form-id" target="_blank" class="cta-button" style="margin-bottom:2rem;">Fill Google Form</a>
-            <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contact@innovatetech.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Solapur</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">🐦</a>
-                        <a href="#" class="social-link">💼</a>
-                        <a href="#" class="social-link">📱</a>
-                    </div>
-                </div>
+    <!-- Blog / Insights -->
+    <section id="blog" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Insights & Resources</h2>
+          <p>Fresh perspectives on tech, AI, and product-building.</p>
         </div>
-    </div>
-</section>
+
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <img src="img/Aitrend.webp" alt="Abstract AI concept illustration" />
+            <div class="blog-content">
+              <h3>AI Trends for SMBs in 2025</h3>
+              <p>From copilots to process automation, how small and mid-sized businesses can ride the AI wave responsibly.</p>
+              <a href="#" class="btn btn-outline">Read more</a>
+            </div>
+          </article>
+
+        <article class="blog-card reveal">
+            <img src="img/AI-ML.jpg" alt="Students collaborating on laptops" />
+            <div class="blog-content">
+              <h3>Student Projects with ML: From Idea to Demo</h3>
+              <p>Practical guide for students — picking a problem, setting up data, prototyping fast, and telling a story.</p>
+              <a href="#" class="btn btn-outline">Read more</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <img src="img/web-development.webp" alt="Developer working with code editor" />
+            <div class="blog-content">
+              <h3>Web App Dev Best Practices</h3>
+              <p>Security, accessibility, performance — the 2025 checklist for production-grade web applications.</p>
+              <a href="#" class="btn btn-outline">Read more</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <img src="img/Startup.jpg" alt="Design system components" />
+            <div class="blog-content">
+              <h3>Design Systems for Startups</h3>
+              <p>Move faster with consistency. How a lean design system pays off from MVP to scale.</p>
+              <a href="#" class="btn btn-outline">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section alt-bg">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Let’s Build Something Amazing Together</h2>
+          <p>Have an idea or challenge? We’d love to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+          <form id="contactForm" class="contact-form glass-panel reveal" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name<span aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required />
+                <small class="error" aria-live="polite"></small>
+              </div>
+              <div class="form-field">
+                <label for="email">Email<span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="purpose">Purpose</label>
+                <select id="purpose" name="purpose">
+                  <option value="Software Project">Software Project</option>
+                  <option value="AI Solution">AI Solution</option>
+                  <option value="Student Collaboration">Student Collaboration</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message<span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, timeline, and goals." required></textarea>
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <button type="submit" class="btn btn-gradient">Send Message</button>
+            <p id="formSuccess" class="form-success" role="status" aria-live="polite" hidden>Thank you! We’ll get back within 24–48 hours.</p>
+          </form>
+
+          <div class="contact-info reveal">
+            <div class="glass-panel">
+              <h3>Contact Details</h3>
+              <ul class="contact-list">
+                <li><i class="fa-solid fa-location-dot"></i> Solapur, Maharashtra, India</li>
+                <li><i class="fa-solid fa-phone"></i> +91 90285 33147</li>
+                <li><i class="fa-solid fa-envelope"></i> averixsolutions001@gmail.com</li>
+              </ul>
+              <div class="map-wrap">
+                <iframe title="Averix Solutions in Solapur, Maharashtra"
+                  width="100%" height="280" style="border:0; border-radius:16px;"
+                  loading="lazy" allowfullscreen
+                  src="https://www.google.com/maps?q=Solapur%2C%20Maharashtra&z=12&output=embed">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Averix Solutions</h3>
-          <p>Building innovative software solutions for the future. We specialize in AI/ML, web development, and custom software for businesses of all sizes.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <a href="#services">Software Development</a>
-          <a href="#services">Web Development</a>
-          <a href="#services">AI & Machine Learning</a>
-          <a href="#services">Student Projects</a>
-        </div>
-        <div class="footer-section">
-          <h3>GitHub Projects</h3>
-          <a href="#">HideInSight</a>
-          <a href="#">VoiceFlow</a>
-          <a href="#">Chacha Chaudhary ChatBot</a>
-          <a href="#">Portfolio Platform</a>
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Averix Solutions</h4>
+        <p>Solapur’s innovation studio for software, AI/ML, and delightful digital products. We partner with startups, SMEs, and students.</p>
+        <a href="#contact" class="btn btn-outline btn-small">Work with us</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#" class="careers">Careers at Averix Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li>Software Development</li>
+          <li>Web Development</li>
+          <li>AI & ML Solutions</li>
+          <li>Student/Academic Projects</li>
+          <li>Cloud Integration & DevOps</li>
+          <li>Data Analytics & Visualization</li>
+          <li>Mobile App Development</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay Updated</h4>
+        <form id="newsletterForm" class="newsletter" novalidate>
+          <input type="email" id="newsletterEmail" placeholder="you@example.com" aria-label="Email address" />
+          <button class="btn btn-gradient btn-small" type="submit">Subscribe</button>
+          <small id="newsletterMsg" class="newsletter-msg" aria-live="polite"></small>
+        </form>
+        <div class="social">
+          <a href="tel:+919028533147" aria-label="Call Averix Solutions" title="Call Us">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+          <a href="https://github.com/AverixSolution" target="_blank" rel="noopener" aria-label="Averix on GitHub" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/averixsolutions" target="_blank" rel="noopener" aria-label="Averix on LinkedIn" title="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Averix Solutions. All rights reserved. | Designed with ❤️ for innovation</p>
-      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>  Averix Solutions. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Link JS -->
+  <!-- Floating AI Chat Widget -->
+  <button class="chat-toggle" id="chatToggle" aria-label="Open AI chat">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <strong>🤖 Averix AI Assistant</strong>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-content">
+          👋 Hi! I'm your Averix AI Assistant. Ask me anything about our services, technology stack, or how we can help with your project!
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything..." />
+      <button id="chatSend" class="chat-send-btn" aria-label="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+    <!-- Floating Contact Buttons -->
+    <div class="float-btn-group">
+      <a class="float-btn whatsapp" 
+        href="https://wa.me/919028533147?text=Hello%20Averix%20Solutions%2C%20I%27d%20like%20to%20discuss%20a%20project." 
+        target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="tooltip">WhatsApp</span>
+      </a>
+
+      <a class="float-btn email" 
+        href="mailto:averixsolutions001@gmail.com?subject=Inquiry%20from%20Averix%20Website&body=Hello%20Averix%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project."
+        aria-label="Email Averix Solutions">
+        <i class="fa-solid fa-envelope"></i>
+        <span class="tooltip">Email</span>
+      </a>
+    </div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
