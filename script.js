@@ -30,20 +30,40 @@
     }
   });
 
-  // 2) Theme toggle (default dark, remember preference)
+  // 2) Theme toggle (auto-detect browser preference, remember user choice)
+  // Note: Initial theme is already applied by inline script in <head> to prevent flash
   const themeToggle = $('#themeToggle');
   const userTheme = localStorage.getItem('theme');
+  
+  // Detect browser's default color scheme preference
+  const getBrowserPreference = () => {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  };
+  
   const applyTheme = (mode) => {
     document.body.classList.toggle('light', mode === 'light');
     localStorage.setItem('theme', mode);
   };
-  applyTheme(userTheme || 'dark');
+  
+  // Sync toggle state with current theme
   if (themeToggle) {
     themeToggle.checked = document.body.classList.contains('light');
     themeToggle.addEventListener('change', () => {
       applyTheme(themeToggle.checked ? 'light' : 'dark');
     });
   }
+  
+  // Listen for browser theme changes (when user hasn't set a preference)
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't manually set a preference
+    if (!localStorage.getItem('theme')) {
+      const newTheme = e.matches ? 'light' : 'dark';
+      document.body.classList.toggle('light', newTheme === 'light');
+      if (themeToggle) {
+        themeToggle.checked = newTheme === 'light';
+      }
+    }
+  });
 
   // 3) Smooth scrolling with header offset
   const header = $('#header');
