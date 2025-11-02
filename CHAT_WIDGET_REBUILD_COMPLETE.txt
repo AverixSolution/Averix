@@ -25,7 +25,7 @@ WHAT WAS DONE:
 
 3. ✅ JavaScript (script.js)
    - Completely rewritten chat logic
-   - Your Gemini API key integrated: AIzaSyD_DUHYBXNGLDtBJ-ovDOlTYMMJurVCrXs
+   - Your Gemini API key integrated: 
    - Clean, simple code
    - Proper error handling
    - Features:
