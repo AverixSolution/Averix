@@ -152,6 +152,10 @@ body.light .section.alt-bg {
   border-bottom: 1px solid var(--border);
   transition: transform .35s ease, background .35s ease, box-shadow .35s ease;
 }
+body.light .header {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 .header.nav-up { transform: translateY(-100%); }
 .nav-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
 .brand { display: flex; align-items: center; text-decoration: none; color: var(--text); gap: 12px; }
@@ -208,13 +212,17 @@ body.light #themeToggle + .toggle::after { left: 24px; }
   .nav-toggle {
     display: inline-flex; flex-direction: column; gap: 4px; background: transparent; border: 0; cursor: pointer;
   }
-  .nav-toggle .bar { width: 20px; height: 2px; background: var(--text); display: block; }
+  .nav-toggle .bar { width: 20px; height: 2px; background: var(--text); display: block; transition: background 0.3s ease; }
   .nav-menu {
     position: fixed; top: var(--header-h); right: 12px; left: 12px; border: 1px solid var(--border);
     background: rgba(14, 18, 36, .85); backdrop-filter: var(--glass);
     padding: 16px; border-radius: var(--radius); transform-origin: top right; transform: scale(.98); opacity: 0; pointer-events: none;
     flex-direction: column; gap: 12px; box-shadow: var(--shadow);
     max-width: calc(100vw - 24px);
+  }
+  body.light .nav-menu {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
   .nav-menu.open { transform: scale(1); opacity: 1; pointer-events: auto; }
 }
@@ -354,8 +362,18 @@ body.light .hero-overlay {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 18px; display: grid; place-items: center; gap: 8px; text-align: center; font-weight: 600;
   transition: transform .2s ease, box-shadow .2s ease;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .tech-item i { font-size: 34px; }
+.tech-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
 .tech-item:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
 /* Projects */
@@ -416,7 +434,7 @@ body.light .hero-overlay {
 
 
 .project-card {
-  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: #0e1426; cursor: pointer;
+  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--bg-soft); cursor: pointer;
   transform: translateY(0); transition: transform .25s ease, box-shadow .25s ease;
   display: grid; grid-template-rows: 180px auto;
 }
@@ -444,6 +462,30 @@ body.light .hero-overlay {
   .parallax { background-attachment: scroll !important; }
   .modal-body { grid-template-columns: 1fr; }
   .modal-media img { border-radius: var(--radius) var(--radius) 0 0; height: 220px; }
+  
+  /* Fix modal positioning for mobile */
+  .modal-content {
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    margin: 20px auto;
+  }
+  
+  .modal {
+    padding: 20px 12px;
+    overflow-y: auto;
+  }
+  
+  .modal-details {
+    padding: 20px;
+    max-height: none;
+  }
+  
+  .modal-close {
+    position: sticky;
+    top: 12px;
+    z-index: 10;
+  }
 }
 
 /* Testimonials */
@@ -504,7 +546,7 @@ body.light .hero-overlay {
 
 /* Blog */
 .blog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #0e1426; transition: transform .25s ease, box-shadow .25s ease; }
+.blog-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); transition: transform .25s ease, box-shadow .25s ease; }
 .blog-card img { width: 100%; height: 160px; object-fit: cover; }
 .blog-content { padding: 16px; }
 .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
@@ -730,7 +772,7 @@ body.light .footer { background: #f7f8fb; }
   background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -748,7 +790,7 @@ body.light .footer { background: #f7f8fb; }
 
 .chat-header {
   padding: 18px 20px;
-  background: rgba(59, 130, 246, 0.1);
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
   border-radius: 16px 16px 0 0;
   display: flex;
@@ -816,8 +858,8 @@ body.light .footer { background: #f7f8fb; }
 }
 
 .bot-message .message-content {
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--border);
   color: var(--text);
   border-radius: 12px 12px 12px 4px;
 }
@@ -868,7 +910,7 @@ body.light .footer { background: #f7f8fb; }
 .chat-input-wrapper {
   padding: 16px;
   border-top: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
   border-radius: 0 0 16px 16px;
   display: flex;
   gap: 10px;
@@ -879,7 +921,7 @@ body.light .footer { background: #f7f8fb; }
   padding: 12px 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface);
   color: var(--text);
   font-size: 14px;
   font-family: inherit;
@@ -889,7 +931,7 @@ body.light .footer { background: #f7f8fb; }
 .chat-input:focus {
   outline: none;
   border-color: var(--primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-strong);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -1065,6 +1107,23 @@ body.light .footer { background: #f7f8fb; }
 
 @media (max-width: 600px) {
   .tech-grid { grid-template-columns: repeat(3, 1fr); }
+  
+  /* Technology items mobile text fix */
+  .tech-item {
+    padding: 12px 8px;
+    font-size: 13px;
+    min-height: 80px;
+  }
+  
+  .tech-item i {
+    font-size: 28px;
+  }
+  
+  .tech-item span {
+    font-size: 12px;
+    line-height: 1.2;
+    max-width: 100%;
+  }
   .blog-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
